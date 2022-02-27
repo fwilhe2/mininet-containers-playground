@@ -9,6 +9,8 @@ Vagrant.configure("2") do |config|
       provider.cpus = 2
     end
 
+    config.vm.provision "file", source: "tmux.conf", destination: "~/.tmux.conf"
+
     config.vm.provision "shell", inline: <<-SHELL
       set -x
       apt-get update
