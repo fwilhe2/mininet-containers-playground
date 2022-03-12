@@ -79,8 +79,8 @@ def run():
         "go-server > output/go-server-stdout.txt 2> output/go-server-stderr.txt &"
     )
 
-    info(net["client1"].cmd("http proxy:10000"))
-    info(net["client2"].cmd("http proxy:10000"))
+    info(net["client1"].cmd("k6 run --vus 10 --duration 30s /vagrant/k6-client.js"))
+    info(net["client2"].cmd("k6 run --vus 10 --duration 30s /vagrant/k6-client.js"))
 
     CLI(net)
     net.stop()
